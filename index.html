@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<style>
+			label,input
+			{
+				margin:10px;
+				font-size:20px;
+			}
+			
+			input
+			{
+				font-size:17px;
+				padding:5px 10px;;
+				
+			}
+				
+			
+			.container
+			{
+				padding:20px;
+				width:60%; 
+				border:1px solid black;
+				
+			}
+			
+			span
+			{
+				font-size:17px;
+			}
+			
+			button
+			{
+				padding: 5px 10px;
+				margin:15px 0px;
+				font-size:17px;
+			}
+			
+			#msgdiv
+			{
+				font-weight:bold;
+				color:red;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<center> <h1> Student Login Form </h1> </center>
+			<center>
+			<form>			
+				<div class="container">
+					<div id="msgdiv"></div>
+					<label>Username : </label>
+					<input type="text" id="username" required>
+					<br>
+					<label>Password : </label>
+					<input type="password" id="password" required> <br>
+					<input type="checkbox" id="remcheck"> <span> Remember me<span><br>
+					<input type="button" onclick="validate()" value="Login">
+					<br>
+				</div>
+			</form>
+		</center>
+
+	
+	</body>
+	
+	<script>
+	function validate()
+	{
+		
+		//document.cookie = "username="+uname+"; password="+pass+"; max-age=" + 24*60*60;
+		//document.cookie = "username=John Doe";
+
+		var uname = document.getElementById("username").value;
+		var pass  = document.getElementById("password").value;
+		
+		
+		if(uname == "LTI" && pass=="123")
+		{
+			window.location.href = "welcome.html?uname="+uname;
+		
+		}
+		else
+		{
+			document.getElementById("msgdiv").innerHTML = "Invalid Username/Password. Try Again!";
+		}
+		
+		var rememberBox = document.getElementById("remcheck");
+		
+		if(rememberBox.checked)
+		{
+			document.cookie = "username="+uname+"; secure; max-age=" + 24*60*60;
+			
+			document.cookie = "password="+pass+"; secure; max-age=" + 24*60*60;
+			
+		}
+			
+		
+		
+
+		
+	}
+	</script>
+	
+	
+</html>
